@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pyramidofneedsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="activities">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="opis" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="poeni" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'pyramidofneeds.dbo.calendar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="calendar">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="user" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="1" />
+      <PropertyRef Name="2" />
+      <PropertyRef Name="3" />
+      <PropertyRef Name="4" />
+      <PropertyRef Name="5" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="1" Type="int" Nullable="false" />
+    <Property Name="2" Type="int" Nullable="false" />
+    <Property Name="3" Type="int" Nullable="false" />
+    <Property Name="4" Type="int" Nullable="false" />
+    <Property Name="5" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="pyramidofneedsModelStoreContainer">
+    <EntitySet Name="activities" EntityType="Self.activities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="calendar" EntityType="Self.calendar" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [calendar].[id] AS [id], 
+    [calendar].[user] AS [user], 
+    [calendar].[date] AS [date], 
+    [calendar].[1] AS [1], 
+    [calendar].[2] AS [2], 
+    [calendar].[3] AS [3], 
+    [calendar].[4] AS [4], 
+    [calendar].[5] AS [5]
+    FROM [dbo].[calendar] AS [calendar]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
