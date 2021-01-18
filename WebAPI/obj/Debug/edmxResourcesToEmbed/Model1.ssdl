@@ -9,20 +9,11 @@
     <Property Name="opis" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="poeni" Type="int" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'pyramidofneeds.dbo.calendar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="calendar">
     <Key>
-      <PropertyRef Name="id" />
       <PropertyRef Name="user" />
       <PropertyRef Name="date" />
-      <PropertyRef Name="1" />
-      <PropertyRef Name="2" />
-      <PropertyRef Name="3" />
-      <PropertyRef Name="4" />
-      <PropertyRef Name="5" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="user" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="date" Type="date" Nullable="false" />
     <Property Name="1" Type="int" Nullable="false" />
@@ -40,18 +31,7 @@ warning 6002: The table/view 'pyramidofneeds.dbo.calendar' does not have a prima
   </EntityType>
   <EntityContainer Name="pyramidofneedsModelStoreContainer">
     <EntitySet Name="activities" EntityType="Self.activities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="calendar" EntityType="Self.calendar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="calendar" EntityType="Self.calendar" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [calendar].[id] AS [id], 
-    [calendar].[user] AS [user], 
-    [calendar].[date] AS [date], 
-    [calendar].[1] AS [1], 
-    [calendar].[2] AS [2], 
-    [calendar].[3] AS [3], 
-    [calendar].[4] AS [4], 
-    [calendar].[5] AS [5]
-    FROM [dbo].[calendar] AS [calendar]</DefiningQuery>
-    </EntitySet>
   </EntityContainer>
 </Schema>

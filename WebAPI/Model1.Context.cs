@@ -13,10 +13,10 @@ namespace WebAPI
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class pyramidofneedsEntities1 : DbContext
+    public partial class pyramidofneedsEntities2 : DbContext
     {
-        public pyramidofneedsEntities1()
-            : base("name=pyramidofneedsEntities1")
+        public pyramidofneedsEntities2()
+            : base("name=pyramidofneedsEntities2")
         {
         }
     
@@ -26,7 +26,7 @@ namespace WebAPI
         }
     
         public virtual DbSet<activity> activities { get; set; }
-        public virtual DbSet<user> users { get; set; }
         public virtual DbSet<calendar> calendars { get; set; }
+        public virtual DbSet<user> users { get; set; }
     }
 }

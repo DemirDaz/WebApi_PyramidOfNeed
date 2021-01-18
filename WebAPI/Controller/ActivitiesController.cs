@@ -9,7 +9,7 @@ namespace WebAPI.Controller
 {
     public class ActivitiesController : ApiController
     {
-        pyramidofneedsEntities1 conn = new pyramidofneedsEntities1();
+        pyramidofneedsEntities2 conn = new pyramidofneedsEntities2();
         // GET: api/hello
         public IEnumerable<string> Get()
         {

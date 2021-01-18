@@ -12,7 +12,7 @@ namespace WebAPI.Controller
 {
     public class UserController : ApiController
     {
-        pyramidofneedsEntities1 conn = new pyramidofneedsEntities1();
+        pyramidofneedsEntities2 conn = new pyramidofneedsEntities2();
         // GET: api/user
         
         public List<user> Get()

@@ -9,25 +9,11 @@
     <Property Name="opis" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="poeni" Type="Int32" Nullable="false" />
   </EntityType>
-  <EntityType Name="user">
-    <Key>
-      <PropertyRef Name="email" />
-    </Key>
-    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-  </EntityType>
   <EntityType Name="calendar">
     <Key>
-      <PropertyRef Name="id" />
       <PropertyRef Name="user" />
       <PropertyRef Name="date" />
-      <PropertyRef Name="C1" />
-      <PropertyRef Name="C2" />
-      <PropertyRef Name="C3" />
-      <PropertyRef Name="C4" />
-      <PropertyRef Name="C5" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="user" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="C1" Type="Int32" Nullable="false" />
@@ -36,9 +22,16 @@
     <Property Name="C4" Type="Int32" Nullable="false" />
     <Property Name="C5" Type="Int32" Nullable="false" />
   </EntityType>
-  <EntityContainer Name="pyramidofneedsEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="pyramidofneedsEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="activities" EntityType="Self.activity" />
-    <EntitySet Name="users" EntityType="Self.user" />
     <EntitySet Name="calendars" EntityType="Self.calendar" />
+    <EntitySet Name="users" EntityType="Self.user" />
   </EntityContainer>
 </Schema>

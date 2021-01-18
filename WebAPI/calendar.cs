@@ -14,7 +14,6 @@ namespace WebAPI
     
     public partial class calendar
     {
-        public int id { get; set; }
         public string user { get; set; }
         public System.DateTime date { get; set; }
         public int C1 { get; set; }

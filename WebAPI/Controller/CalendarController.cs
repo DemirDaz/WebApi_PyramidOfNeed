@@ -9,7 +9,7 @@ namespace WebAPI.Controller
 {
     public class CalendarController : ApiController
     {
-        pyramidofneedsEntities1 conn = new pyramidofneedsEntities1();
+        pyramidofneedsEntities2 conn = new pyramidofneedsEntities2();
         // GET: api/calendar
         public IEnumerable<calendar> Get()
         {
@@ -17,14 +17,18 @@ namespace WebAPI.Controller
         }
 
         // GET: api/calendar/5
-        public calendar Get(int id)
+        public calendar Get(string id, DateTime date)
         {
-            return conn.calendars.Where(x => x.id == id).FirstOrDefault();
+            return conn.calendars.Where(x => x.user == id && x.date == date).FirstOrDefault();
         }
 
         // POST: api/calendar
+
+
         public void Post([FromBody] calendar value)
         {
+            if (conn.calendars.Where(x => x.user == value.user && x.date == value.date).FirstOrDefault() == null) 
+            { 
             calendar novi = new calendar();
             novi.user = value.user;
             novi.date = value.date;
@@ -33,9 +37,20 @@ namespace WebAPI.Controller
             novi.C3 = value.C3;
             novi.C4 = value.C4;
             novi.C5 = value.C5;
-            
+
             conn.calendars.Add(novi);
             conn.SaveChanges();
+             }
+            else {
+                calendar stari = conn.calendars.Where(x => x.user == value.user && x.date == value.date).FirstOrDefault();
+                stari.C1 = value.C1;
+                stari.C2 = value.C2;
+                stari.C3 = value.C3;
+                stari.C4 = value.C4;
+                stari.C5 = value.C5;
+                conn.SaveChanges();
+
+            }
         }
 
         // PUT: api/calendar/5
